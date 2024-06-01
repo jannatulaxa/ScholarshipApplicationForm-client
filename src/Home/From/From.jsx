@@ -88,7 +88,11 @@ const From = () => {
         );
 
         // e.target.reset();
-        axiosPublic.get("application");
+        axiosPublic.get("/application",{
+          params:{
+            mail:data.ContactEmailTextBox,
+          }
+        });
       }
     });
   };
