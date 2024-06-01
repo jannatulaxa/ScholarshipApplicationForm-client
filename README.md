@@ -10,12 +10,14 @@ Live Link : https://scholarshipapplicationform.surge.sh
             VITE_IMAGE_KEY=e317cfd7d35deee69f3da919a31304e4
             YOUR_RECAPTCHA_SITE_KEY=6LdsuO0pAAAAAMe4emJX_NkwSYXrRa1P8RFjCUyM
 5. add/replace the local host domain on server site in index.js folder in app.use:
+        
         app.use(
                 cors({
                     origin:["http://localhost:5173","https://scholarshipapplicationform.surge.sh"],
                     credentials: true,
                 })
                 );
+                
 6. give comand npm run dev.
 
 
