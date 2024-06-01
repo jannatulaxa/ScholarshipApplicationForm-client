@@ -11,6 +11,7 @@ import Admin from "../Layouts/Admin/AdminLogin";
 import AdminLayout from "../Layouts/AdminLayout";
 import Dashboard from "../Layouts/Admin/Dashboard";
 import ApplicationDetails from "../Layouts/ApplicationDetails/ApplicationDetails";
+import AdminReg from "../Layouts/Admin/AdminReg";
 
 const Routes = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const Routes = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
+      },
+      {
+        path: "/admin/adminreg",
+        element: <AdminReg />,
       },
       {
         path: "/admin/dashboard",

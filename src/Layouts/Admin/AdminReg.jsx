@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import useAxiousPublic from "../../Hooks/useAxiousPublic/useAxiousPublic";
 import { toast } from "react-toastify";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 
-const AdminLogin = () => {
+const AdminReg = () => {
   const axiosPublic = useAxiousPublic();
   const navigate = useNavigate();
   const {
@@ -13,14 +13,23 @@ const AdminLogin = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    axiosPublic.post("/verifyAdmin", data).then((res) => {
-      if (res.data) {
-        toast("Login Successfully");
-        navigate("/admin/dashboard");
-      } else {
-        toast("Something Happening wrong");
+    
+    axiosPublic.post("/adminData", data)
+    .then((res) => {
+      
+      if (res.data.insertedId) {
+        toast(
+          "Registration Successfully"
+        );
+        navigate("/admin");
+      }
+      else{
+        toast(
+          "Something Happening wrong"
+        );
       }
     });
+
   };
 
   return (
@@ -39,7 +48,7 @@ const AdminLogin = () => {
                         textAlign: "center",
                       }}
                     >
-                      LOGIN
+                      Registration
                     </td>
                   </tr>
                   <tr>
@@ -92,15 +101,15 @@ const AdminLogin = () => {
                   <tr>
                     <td style={{ textAlign: "center" }}>
                       <input
-                        type="submit"
+                      type="submit"
                         className="btn btn-outline"
-                        value="Login Now"
+                        value="Registration Now"
                       />
                     </td>
                   </tr>
                   <tr style={{ textAlign: "center" }}>
-                    <NavLink to="/admin/adminreg">
-                      <p className="text-blue-600 mt-6">Go to Registration</p>
+                    <NavLink to="/admin">
+                      <p className="text-blue-600 mt-6">Go to Login</p>
                     </NavLink>
                   </tr>
                 </tbody>
@@ -113,4 +122,5 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+
+export default AdminReg;
